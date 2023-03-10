@@ -13,7 +13,8 @@ import param as pm
 import random
 import math
 
-from quantitativeinvestmentanalysis.qia import InterestRate
+from qia import InterestRate
+
 def test_interest_rate_view():
     params = {
         'real_risk_free_interest_rate': 0,
@@ -28,14 +29,14 @@ def test_interest_rate_view():
     return pane
 
 
-from quantitativeinvestmentanalysis.qia import CompoundingCashFlow
+from qia import CompoundingCashFlow
 def test_compounding_cash_flow():
     r = InterestRate(real_risk_free_interest_rate=0.08)
     c = CompoundingCashFlow(r, present_value=10000, compound_periods=4, N=2)
     assert c.future_lump_value() - 11716.59 < 0.1
 
 
-from quantitativeinvestmentanalysis.qia import CashFlow
+from qia import CashFlow
 def test_present_value_annuity():
     params = {
         'real_risk_free_interest_rate': 0.07,
