@@ -49,3 +49,5 @@ def test_present_value_annuity():
     cashflow = CashFlow(r, annuity=20000, N=19)
     assert cashflow.present_annuity_value() - 2267119.05 < 0.1
 
+from ltfqia import ContinuousCompoundingCashFlow
+

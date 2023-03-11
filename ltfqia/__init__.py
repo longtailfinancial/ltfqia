@@ -13,7 +13,7 @@ import math
 
 # Chapter 1 The Time Value of Money
 from ltfqia.interest_rate import InterestRate
-from ltfqia.cashflow import CashFlow, CompoundingCashFlow
+from ltfqia.cashflow import CashFlow, CompoundingCashFlow, ContinuousCompoundingCashFlow
 
 
 # Chapter 2 Discounted Cash Flow Operations
