@@ -12,9 +12,9 @@ import math
 
 
 # Chapter 1 The Time Value of Money
-from qia.interest_rate import InterestRate
-from qia.cashflow import CashFlow, CompoundingCashFlow
+from ltfqia.interest_rate import InterestRate
+from ltfqia.cashflow import CashFlow, CompoundingCashFlow
 
 
 # Chapter 2 Discounted Cash Flow Operations
-from qia.net_present_value import NetPresentValue
+from ltfqia.net_present_value import NetPresentValue

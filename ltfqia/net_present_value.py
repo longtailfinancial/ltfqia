@@ -1,5 +1,5 @@
 import param as pm
-from qia.interest_rate import InterestRate
+from ltfqia.interest_rate import InterestRate
 """
 2.0 Net Present Value and Internal Rate of Return
 There are three chief areas of financial decision-making in most businesses. 
