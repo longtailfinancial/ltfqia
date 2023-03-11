@@ -1,2 +1,1 @@
-# qia
-Quantitative Investment Analysis
+# LTF Quantitative Investment Analysis
