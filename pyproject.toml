@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ltfqia"
-version = "0.1.0"
+version = "0.1.1"
 description = "Quantitative Investment Analysis"
 authors = ["Shawn Anderson <shawn@longtailfinancial.com>"]
 readme = "README.md"
