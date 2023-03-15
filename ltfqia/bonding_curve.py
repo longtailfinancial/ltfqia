@@ -3,6 +3,44 @@ import pandas as pd
 import numpy as np
 import param as pm
 
+class PureCurve(pm.Parameterized):
+    reserve_ratio = pm.Number(0.5, bounds=(0.01,2), step=0.01)
+    price = pm.Number(1, bounds=(0.01,10), step=0.01)
+    supply = pm.Number(0.5, bounds=(0.01,0.99), step=0.01)
+    
+    @pm.depends("r", "price", "supply")
+    def update(self):
+        self.slope = self.slope()
+        self.exponent = self.exponent()
+    
+    def exponent(self):
+        return (1 / self.reserve_ratio) - 1
+    
+    def slope(self):
+        return self.price / self.supply ** self.exponent()
+    
+    def exponential(self, x):
+        return self.slope() * x ** self.exponent()
+    
+    #For drawing the bonding curve. Range shows how many times the initial supply you make the graph for, steps how many subdivisions
+    def curve_over_supply(self, supply_range=1, steps=1000):
+        x = np.linspace(self.param['supply'].bounds[0]/2, self.param['supply'].bounds[1], steps)
+        y = self.exponential(x)
+
+        return pd.DataFrame(zip(x, y), columns=["Supply", "Price"])
+    
+    def initial_point(self):
+        points = hv.Points((self.supply,self.price))
+        return points.opts(color='k', size=10)
+    
+    def view_curve_over_supply(self):
+        hv.extension('bokeh')
+        curve = self.curve_over_supply()
+        return curve.hvplot.line(x='Supply', y='Price', line_width=8) * self.initial_point()
+    
+    def info(self):
+        return f"Slope: {self.slope():.2} Exponent: {self.exponent():.2}"
+
 class BondingCurveInitializer(pm.Parameterized):
 
     initial_price = pm.Number(3, bounds=(0.1,10), step=0.01)

@@ -11,7 +11,7 @@ import math
 
 
 # Token Engineering Suite
-from ltfqia.bonding_curve import BondingCurveInitializer, BondingCurve, BondingCurveCalculator
+from ltfqia.bonding_curve import BondingCurveInitializer, BondingCurve, BondingCurveCalculator, PureCurve
 
 
 # Chapter 1 The Time Value of Money
