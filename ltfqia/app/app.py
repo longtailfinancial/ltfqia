@@ -23,28 +23,13 @@ params = {
 rate = InterestRate(**params)
 rate_view = pn.Column(rate, "Interest Rate:", rate.interest_rate)
 
-# CashFlow
-from ltfqia import CashFlow
+from ltfqia import ContinuousCompoundingCashFlow
+# ContinuousCompoundingCashFlow
 params = {
     'present_value': 100,
     'N': 1,
 }
-cashflow = CashFlow(rate, **params)
-cashflow.param['N'].bounds = (1,100)
-cashflow_view = pn.Column(cashflow, cashflow.view)
 
-
-# CompoundingCashFlow
-from ltfqia import CompoundingCashFlow
-compounding_cashflow = CompoundingCashFlow(rate, compound_periods=4, **params)
-compounding_cashflow_view = pn.Column(
-    compounding_cashflow, 
-    compounding_cashflow.view)
-    # "Future Value:", compounding_cashflow.future_value,
-    # "Effective Annual Rate:", compounding_cashflow.effective_annual_rate)
-
-# ContinuousCompoundingCashFlow
-from ltfqia import ContinuousCompoundingCashFlow
 continuous_compounding_cashflow = ContinuousCompoundingCashFlow(rate, **params)
 continous_compounding_cashflow_view = pn.Column(
     continuous_compounding_cashflow, 
@@ -56,8 +41,6 @@ pn.template.FastListTemplate(
     header_background=accent_color,
     main=[
         rate_view, 
-        cashflow_view,
-        compounding_cashflow_view,
         continous_compounding_cashflow_view,
     ],
 ).servable()
