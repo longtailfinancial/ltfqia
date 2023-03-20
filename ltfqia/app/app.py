@@ -12,7 +12,7 @@ hv.extension("bokeh")
 accent_color = "#00286e"
 
 # InterestRate
-from qia import InterestRate
+from ltfqia import InterestRate
 params = {
     'real_risk_free_interest_rate': 0.01,
     'inflation_premium': 0.01,
@@ -24,7 +24,7 @@ rate = InterestRate(**params)
 rate_view = pn.Column(rate, "Interest Rate:", rate.interest_rate)
 
 # CashFlow
-from qia import CashFlow
+from ltfqia import CashFlow
 params = {
     'present_value': 100,
     'N': 1,
@@ -35,7 +35,7 @@ cashflow_view = pn.Column(cashflow, cashflow.view)
 
 
 # CompoundingCashFlow
-from qia import CompoundingCashFlow
+from ltfqia import CompoundingCashFlow
 compounding_cashflow = CompoundingCashFlow(rate, compound_periods=4, **params)
 compounding_cashflow_view = pn.Column(
     compounding_cashflow, 
@@ -44,7 +44,7 @@ compounding_cashflow_view = pn.Column(
     # "Effective Annual Rate:", compounding_cashflow.effective_annual_rate)
 
 # ContinuousCompoundingCashFlow
-from qia import ContinuousCompoundingCashFlow
+from ltfqia import ContinuousCompoundingCashFlow
 continuous_compounding_cashflow = ContinuousCompoundingCashFlow(rate, **params)
 continous_compounding_cashflow_view = pn.Column(
     continuous_compounding_cashflow, 
